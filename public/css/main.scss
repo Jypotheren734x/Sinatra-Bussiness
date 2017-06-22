@@ -1,0 +1,191 @@
+@import "nav";
+@import "bourbon/bourbon";
+
+#paragraph {
+  text-align: left;
+}
+
+li {
+  font-weight: bold;
+}
+
+a {
+  color: #333333;
+  text-decoration: none;
+  padding: 15px 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: golden-ratio(10px, 1);
+  @include transition(color .25s);
+  &:hover {
+    color: #69bccc;
+  }
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-family: "Lato", sans-serif;
+}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+  color: black;
+  background-color: #cedbdf !important;
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgimg-1 {
+  min-height: 100%;
+  background-image: url("../img/amCharts.png");
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.container {
+  width: 94% !important;
+}
+
+.team-member {
+  margin: 15px 0;
+  padding: 0;
+  figure {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    img {
+      max-width: 100%;
+      max-height: 100px;
+    }
+  }
+  figcaption {
+    padding: 20px;
+    color: transparent;
+    background-color: transparent;
+    position: absolute;
+    z-index: 996;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    @include transition(all 0.3s ease-in-out);
+    p {
+      font-size: 14px;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      visibility: visible;
+      @include transition(all 0.1s ease-in-out);
+      li {
+        display: inline-block;
+        padding: 10px;
+      }
+    }
+  }
+  h4 {
+    margin: 10px 0 0;
+    padding: 0;
+  }
+  figure {
+    &:hover figcaption {
+      visibility: visible;
+      color: #fff;
+      background: rgba(105, 188, 204, 0.9);
+      height: 100%;
+      @include transition(all 0.3s ease-in-out);
+      ul li a:hover {
+        color: rgba(49, 49, 49, .97);
+      }
+    }
+    img {
+      @include transform(scale(1) rotate(0) translateY(0));
+      @include transition(all 0.4s ease-in-out);
+      &:hover img {
+        @include transform(scale(1.1) rotate(1deg) translateY(12px));
+        @include transition(all 0.4s ease-in-out);
+      }
+    }
+  }
+}
