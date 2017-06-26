@@ -19,14 +19,15 @@ get '/contact' do
   erb :contact
 end
 
-post '/contact' do
+get '/thankyou' do
+  erb :thankyou
+end
+
+post '/thankyou' do
   @name = params[:name]
-  @email = params[:email]
+  @email = params[:mail]
+  @subject = params[:subject]
   @message = params[:message]
-  Pony.mail(
-      to: 'komarnickolas@gmail.com',
-      from: @email.to_s,
-      subject: @name.to_s + "has contacted you",
-      body: @message.to_s
-  )
+  Pony.mail(:to => 'komarnickolas@gmail.com', :from => @email, :subject => @subject, :body => @message, :via => 'sendmail')
+  redirect :thankyou
 end
